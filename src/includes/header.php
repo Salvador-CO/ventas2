@@ -32,6 +32,7 @@ if (empty($_SESSION['active'])) {
     <link href="../assets/css/main.min.css" rel="stylesheet">
     <link href="../assets/css/darktheme.css" rel="stylesheet">
     <link href="../assets/css/custom.css" rel="stylesheet">
+    <link href="../assets/css/extras.css" rel="stylesheet">
 
     <link href="../assets/plugins/datatables/datatables.min.css" rel="stylesheet">
 
@@ -41,29 +42,8 @@ if (empty($_SESSION['active'])) {
     <script>
         function AbrirCaja(){$.ajax({url:"../caja/abrir_cajon.php"})} 
     </script>
-    <script language="javascript">
-    function PulsarTecla(event){
-        tecla = event.keyCode;
-     
-        if(tecla==3)
-        {
-            //foto anterior
-           alert("37");
-        }
-        
-        if(tecla==2)
-        {
-            //foto siguiente
-           alert("39");
-        }
-    }
-     
-    window.onkeydown=PulsarTecla;
-</script>
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo.png" />
-
- 
 
 </head>
 
@@ -79,8 +59,27 @@ if (empty($_SESSION['active'])) {
                         <span class="user-info-text">Control<br><span class="user-state-info">Ventas</span></span>
                     </a>
                 </div>
-            </div>
+            </div> 
+                    <div class="container fechaHora">
+                     <div class="row">
+                        <div class="col-md-5 fechae">
+                            <?php
+                            date_default_timezone_set('America/Mexico_City');
+                            $fechaActual = date('d/m/y');
+                            echo "$fechaActual";
+                            ?>  
+                        </div>
+                        <div class="col-md-7" >
+                            <form name="form_reloj">
+                            <input class="hora" type="text" name="reloj" size="10" onfocus="window.document.form_reloj.reloj.blur()">
+                            </form> 
+                        </div>
+                    </div>
+                    </div>
+                         
+                 
             <div class="app-menu">
+
                 <ul class="accordion-menu">
                     <li class="sidebar-title">
                         Contenido
@@ -88,7 +87,12 @@ if (empty($_SESSION['active'])) {
                     <li>
                         <a href="index.php"><span class="material-icons-outlined">
                                 home
-                            </span> Dashboard</a>
+                            </span> Principal</a>
+                    </li>
+                    <li>
+                        <a href="ventas.php"><span class="material-icons-outlined">
+                                point_of_sale
+                            </span> VENTAS</a>
                     </li>
                     <li>
                         <a href="usuarios.php">
@@ -109,23 +113,21 @@ if (empty($_SESSION['active'])) {
                                 group
                             </span> CLIENTES</a>
                     </li>
-                    <li>
-                        <a href="config.php"><span class="material-icons-outlined">
-                                settings
-                            </span> CONFIGURACION</a>
-                    </li>
+                    
                     <li>
                         <a href=""><span class="material-icons-outlined">
                                 point_of_sale
-                            </span> VENTAS<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                            </span> Reportes<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                         <ul class="sub-menu">
-                            <li>
-                                <a href="ventas.php">CREAR VENTA</a>
-                            </li>
                             <li>
                                 <a href="lista_ventas.php">HISTORIAL VENTA</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="config.php"><span class="material-icons-outlined">
+                                settings
+                            </span> CONFIGURACION</a>
                     </li>
                 </ul>
             </div>
@@ -139,19 +141,9 @@ if (empty($_SESSION['active'])) {
                                 <li class="nav-item">
                                     <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">first_page</i></a>
                                 </li>
-                            </ul>
-                            <button accesskey="c" class="btn btn btn-outline-info mb-0" type="button" href="#" data-bs-toggle="modal" data-bs-target="#modalCajon" onclick="AbrirCaja()">Abrir Cajon</button>
+                                <!-- cajon de dinero -->
+                            <button accesskey="c" class="btn btn btn-outline-info" type="button" href="#" data-bs-toggle="modal" data-bs-target="#modalCajon" onclick="AbrirCaja()" alt="abrir cajon de dinero"><img src="../assets/images/iconos/cajonDinero.png" height ="35" width="35" /></button>
                          </div>
-                        <!--  
-                        <?php
-                        date_default_timezone_set('America/Mexico_City');
-                        $fechaActual = date('d/m/y - h:i:s');
-                        echo "$fechaActual <br>";
-                        ?>-->
-                        <form name="form_reloj">
-                            <input type="text" name="reloj" size="10" style="background-color : Black; color : White; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()">
-                        </form>
-
                         <div class="d-flex">
                             <ul class="navbar-nav">
                                 <li class="nav-item hidden-on-mobile">

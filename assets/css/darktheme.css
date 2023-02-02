@@ -1,5 +1,5 @@
 body {
-    background-color: #181821;
+    background-color: #fff;
     color: #9a9cab;
 }
 
@@ -75,8 +75,8 @@ body {
 }
 
 .app-header::before {
-    background: linear-gradient( 180deg, rgba(31, 31, 43, .8) 0, #181821 40%, #181821 78%, rgba(31, 31, 43, 0) 100%);
-}
+   /* background: linear-gradient( 180deg, rgba(31, 31, 43, .8) 0, #181821 40%, #181821 78%, rgba(31, 31, 43, 0) 100%);
+*/} 
 
 .navbar-light .navbar-nav .nav-link {
     color: #9a9cab;
